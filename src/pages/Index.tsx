@@ -2,9 +2,11 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ServicesSection } from "@/components/sections/ServicesSection";
+import { ThreatMonitorSection } from "@/components/sections/ThreatMonitorSection";
 import { SentinelXSection } from "@/components/sections/SentinelXSection";
-import { TrustSection } from "@/components/sections/TrustSection";
-import { CTASection } from "@/components/sections/CTASection";
+import { AboutSection } from "@/components/sections/AboutSection";
+import { TeamSection } from "@/components/sections/TeamSection";
+import { ContactSection } from "@/components/sections/ContactSection";
 
 const Index = () => {
   return (
@@ -13,9 +15,11 @@ const Index = () => {
       <main>
         <HeroSection />
         <ServicesSection />
+        <ThreatMonitorSection />
         <SentinelXSection />
-        <TrustSection />
-        <CTASection />
+        <AboutSection />
+        <TeamSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>

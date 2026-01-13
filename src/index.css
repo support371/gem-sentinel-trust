@@ -6,82 +6,82 @@
 
 @layer base {
   :root {
-    /* GEM Cyber Trust - Dark Cyber Theme */
-    --background: 222 47% 6%;
+    /* GEM Cybersecurity Monitoring Assist - Deep Navy Theme */
+    --background: 220 30% 8%;
     --foreground: 210 40% 98%;
 
-    --card: 222 47% 8%;
+    --card: 220 30% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222 47% 8%;
+    --popover: 220 30% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 187 92% 50%;
-    --primary-foreground: 222 47% 6%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 222 47% 14%;
+    --secondary: 220 30% 14%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 222 30% 18%;
-    --muted-foreground: 215 20% 55%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 215 20% 60%;
 
-    --accent: 187 92% 50%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 222 47% 6%;
+    --warning-foreground: 220 30% 8%;
 
     --success: 142 76% 36%;
     --success-foreground: 210 40% 98%;
 
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 187 92% 50%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 217 91% 60%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
     /* Custom GEM variables */
-    --gem-glow: 187 92% 50%;
-    --gem-gradient-start: 222 47% 6%;
-    --gem-gradient-end: 222 47% 12%;
-    --gem-cyber-line: 187 70% 40%;
-    --gem-navy: 222 47% 11%;
+    --gem-glow: 217 91% 60%;
+    --gem-gradient-start: 220 30% 8%;
+    --gem-gradient-end: 220 30% 12%;
+    --gem-cyber-line: 217 50% 30%;
+    --gem-navy: 220 30% 11%;
     --gem-slate: 215 25% 27%;
     
     /* Sidebar */
-    --sidebar-background: 222 47% 5%;
+    --sidebar-background: 220 30% 6%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 187 92% 50%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 47% 14%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 220 30% 14%;
     --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 222 30% 18%;
-    --sidebar-ring: 187 92% 50%;
+    --sidebar-border: 220 20% 18%;
+    --sidebar-ring: 217 91% 60%;
   }
 
   .dark {
-    --background: 222 47% 6%;
+    --background: 220 30% 8%;
     --foreground: 210 40% 98%;
-    --card: 222 47% 8%;
+    --card: 220 30% 10%;
     --card-foreground: 210 40% 98%;
-    --popover: 222 47% 8%;
+    --popover: 220 30% 10%;
     --popover-foreground: 210 40% 98%;
-    --primary: 187 92% 50%;
-    --primary-foreground: 222 47% 6%;
-    --secondary: 222 47% 14%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 220 30% 14%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 222 30% 18%;
-    --muted-foreground: 215 20% 55%;
-    --accent: 187 92% 50%;
-    --accent-foreground: 222 47% 6%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 215 20% 60%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 210 40% 98%;
-    --border: 222 30% 18%;
-    --input: 222 30% 18%;
-    --ring: 187 92% 50%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 217 91% 60%;
   }
 }
 
@@ -128,15 +128,20 @@
     background: linear-gradient(
       145deg,
       hsl(var(--card)) 0%,
-      hsl(222 47% 7%) 100%
+      hsl(220 30% 9%) 100%
     );
   }
 
   .gem-cyber-grid {
     background-image: 
-      linear-gradient(hsl(var(--gem-cyber-line) / 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--gem-cyber-line) / 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(hsl(var(--gem-cyber-line) / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--gem-cyber-line) / 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .gem-hex-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L55.98 15v30L30 60 4.02 45V15L30 0z' fill='none' stroke='%23334155' stroke-opacity='0.08'/%3E%3C/svg%3E");
+    background-size: 60px 60px;
   }
 
   .gem-scan-line {
@@ -236,7 +241,7 @@
     background-image: linear-gradient(
       90deg,
       hsl(var(--primary)) 0%,
-      hsl(187 92% 70%) 100%
+      hsl(217 91% 75%) 100%
     );
   }
 }

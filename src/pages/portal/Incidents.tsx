@@ -205,7 +205,7 @@ const Incidents = () => {
                     <Label>Type</Label>
                     <Select
                       value={newIncident.type}
-                      onValueChange={(v) => setNewIncident({ ...newIncident, type: v })}
+                      onValueChange={(v) => setNewIncident({ ...newIncident, type: v as 'security' | 'performance' | 'availability' | 'compliance' | 'other' })}
                     >
                       <SelectTrigger className="bg-secondary/50">
                         <SelectValue />

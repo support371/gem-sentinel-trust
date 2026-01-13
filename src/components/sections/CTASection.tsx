@@ -7,9 +7,9 @@ export function CTASection() {
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 gem-gradient-bg" />
-      <div className="absolute inset-0 gem-cyber-grid opacity-30" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 gem-hex-pattern opacity-30" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-primary/5 rounded-full blur-[120px]" />
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-4xl mx-auto">
@@ -22,7 +22,7 @@ export function CTASection() {
               Ready to Secure Your Enterprise?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-              Get a comprehensive security assessment and discover how GEM Cyber Trust 
+              Get a comprehensive security assessment and discover how GEM Cybersecurity Assist 
               can protect your organization with Sentinel-X™ technology.
             </p>
             
@@ -33,12 +33,12 @@ export function CTASection() {
                   <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <Link to="/contact">
+              <a href="tel:+14017022460">
                 <Button variant="hero-outline" size="xl">
                   <Phone className="w-5 h-5" />
                   Contact Security Team
                 </Button>
-              </Link>
+              </a>
             </div>
             
             <p className="text-sm text-muted-foreground mt-6">

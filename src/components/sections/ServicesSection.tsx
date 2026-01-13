@@ -1,112 +1,109 @@
-import { ServiceCard } from "@/components/cyber/ServiceCard";
-import { Shield, Eye, AlertTriangle, FileCheck, Building, Zap } from "lucide-react";
+import { useState } from "react";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Shield, Package, Users } from "lucide-react";
 
-const services = [
-  {
-    icon: Eye,
-    title: "Threat Monitoring",
-    description: "Continuous 24/7 surveillance of your digital assets with real-time threat detection and alerting.",
-    features: [
-      "Real-time threat detection",
-      "Network traffic analysis",
-      "Endpoint monitoring",
-      "Behavioral analytics"
-    ],
-    href: "/services#monitoring"
-  },
-  {
-    icon: AlertTriangle,
-    title: "Incident Response",
-    description: "Rapid response protocols with dedicated security analysts to contain and remediate threats.",
-    features: [
-      "15-minute response SLA",
-      "Threat containment",
-      "Forensic analysis",
-      "Recovery support"
-    ],
-    href: "/services#response"
-  },
-  {
-    icon: FileCheck,
-    title: "Compliance Management",
-    description: "Achieve and maintain compliance with industry standards and regulatory requirements.",
-    features: [
-      "SOC 2 readiness",
-      "ISO 27001 alignment",
-      "GDPR compliance",
-      "Audit preparation"
-    ],
-    href: "/services#compliance"
-  },
-  {
+const tabContent = {
+  flagship: {
     icon: Shield,
-    title: "Sentinel-X™ Platform",
-    description: "Our proprietary cybersecurity framework combining AI-powered detection with expert analysis.",
+    title: "Sentinel-X Framework",
+    description: "Our proprietary cyber risk intelligence framework providing threat realism modeling, control effectiveness analysis, and executive-ready reporting.",
     features: [
-      "AI threat correlation",
-      "Risk scoring engine",
-      "Behavioral detection",
-      "Executive reporting"
-    ],
-    href: "/sentinel-x"
+      "Threat realism modeling aligned to enterprise and financial environments",
+      "Control effectiveness analysis under operational stress",
+      "Explainable scoring and remediation prioritization",
+      "Executive-ready reporting and AI governance boundaries"
+    ]
   },
-  {
-    icon: Building,
-    title: "Real Estate Protection",
-    description: "Specialized security services for property management systems and smart building infrastructure.",
+  products: {
+    icon: Package,
+    title: "GEM Security Products",
+    description: "Enterprise-grade security solutions engineered for complex risk environments.",
     features: [
-      "Building system security",
-      "Access control audit",
-      "IoT device protection",
-      "Tenant data security"
-    ],
-    href: "/real-estate"
+      "Continuous threat monitoring platform",
+      "Incident response automation",
+      "Compliance management suite",
+      "Real estate protection module"
+    ]
   },
-  {
-    icon: Zap,
-    title: "Digital Asset Protection",
-    description: "Comprehensive protection for your digital identities, accounts, and intellectual property.",
+  advisory: {
+    icon: Users,
+    title: "Advisory Services",
+    description: "Expert guidance and strategic consulting for your security initiatives.",
     features: [
-      "Identity monitoring",
-      "Account protection",
-      "Dark web surveillance",
-      "Brand protection"
-    ],
-    href: "/services#assets"
+      "Security architecture review",
+      "Penetration testing services",
+      "Compliance audit preparation",
+      "Security awareness training"
+    ]
   }
-];
+};
 
 export function ServicesSection() {
+  const [activeTab, setActiveTab] = useState("flagship");
+
   return (
-    <section className="py-24 relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
+    <section id="services" className="py-24 relative">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background" />
       
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-primary font-medium mb-4">Our Services</p>
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Comprehensive Cybersecurity Operations
+            Enterprise Security Architecture
           </h2>
           <p className="text-muted-foreground text-lg">
-            From threat detection to compliance management, we provide end-to-end 
-            security services tailored to your enterprise needs.
+            Advanced cybersecurity solutions engineered for complex risk environments. 
+            Select a capability to explore technical details.
           </p>
         </div>
         
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              icon={service.icon}
-              title={service.title}
-              description={service.description}
-              features={service.features}
-              href={service.href}
-            />
+        {/* Tabbed Content */}
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="max-w-4xl mx-auto">
+          <TabsList className="grid w-full grid-cols-3 bg-secondary/50 border border-border h-auto p-1">
+            <TabsTrigger 
+              value="flagship" 
+              className="py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              Flagship
+            </TabsTrigger>
+            <TabsTrigger 
+              value="products"
+              className="py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              Products
+            </TabsTrigger>
+            <TabsTrigger 
+              value="advisory"
+              className="py-3 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
+            >
+              Advisory Services
+            </TabsTrigger>
+          </TabsList>
+          
+          {Object.entries(tabContent).map(([key, content]) => (
+            <TabsContent key={key} value={key} className="mt-8">
+              <div className="gem-card p-8 rounded-xl">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="p-3 rounded-lg bg-primary/10">
+                    <content.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-foreground mb-2">{content.title}</h3>
+                    <p className="text-muted-foreground">{content.description}</p>
+                  </div>
+                </div>
+                <ul className="space-y-3">
+                  {content.features.map((feature, index) => (
+                    <li key={index} className="flex items-start gap-3">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                      <span className="text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </TabsContent>
           ))}
-        </div>
+        </Tabs>
       </div>
     </section>
   );

@@ -9,9 +9,9 @@ const footerLinks = {
     { name: "Sentinel-X", href: "/sentinel-x" },
   ],
   company: [
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "/trust-center" },
     { name: "Trust Center", href: "/trust-center" },
-    { name: "Careers", href: "/careers" },
+    { name: "Team", href: "/portal/team" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [
@@ -29,14 +29,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-3 mb-4">
               <Shield className="h-8 w-8 text-primary" />
               <div className="flex flex-col">
-                <span className="text-lg font-bold tracking-tight text-foreground">
-                  GEM<span className="text-primary">CYBER</span>
-                </span>
-                <span className="text-[10px] font-medium tracking-widest text-muted-foreground uppercase -mt-1">
-                  Trust
+                <span className="text-base font-bold tracking-tight text-foreground">
+                  GEM Cybersecurity Assist
                 </span>
               </div>
             </Link>
@@ -47,11 +44,15 @@ export function Footer() {
             <div className="space-y-2 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>security@gemcyber.trust</span>
+                <a href="mailto:Assist@gemcybersecurityassist.com" className="hover:text-primary transition-colors">
+                  Assist@gemcybersecurityassist.com
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+1 (888) GEM-SAFE</span>
+                <a href="tel:+14017022460" className="hover:text-primary transition-colors">
+                  +1 (401) 702-2460
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
@@ -115,7 +116,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} GEM Cyber Trust. All rights reserved.
+            © {new Date().getFullYear()} GEM Cybersecurity Assist. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1 text-xs text-muted-foreground">

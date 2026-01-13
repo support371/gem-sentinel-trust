@@ -3,59 +3,114 @@ import { Link } from "react-router-dom";
 import { Menu, X, Shield, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
-const navLinks = [
+const mainNavLinks = [
+  { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
+  { name: "Threat Monitor", href: "/portal" },
   { name: "Sentinel-X", href: "/sentinel-x" },
+  { name: "About", href: "/trust-center" },
   { name: "Trust Center", href: "/trust-center" },
-  { name: "Real Estate Protection", href: "/real-estate" },
+  { name: "Team", href: "/portal/team" },
   { name: "Contact", href: "/contact" },
+];
+
+const productLinks = [
+  { name: "Sentinel-X Framework", href: "/sentinel-x" },
+  { name: "Threat Monitoring", href: "/services#monitoring" },
+  { name: "Incident Response", href: "/services#response" },
+  { name: "Compliance Suite", href: "/services#compliance" },
+  { name: "Real Estate Protection", href: "/real-estate" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 bg-background/90 backdrop-blur-xl">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <div className="relative">
               <Shield className="h-8 w-8 text-primary transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(var(--primary))]" />
-              <div className="absolute inset-0 h-8 w-8 bg-primary/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="text-lg font-bold tracking-tight text-foreground">
-                GEM<span className="text-primary">CYBER</span>
-              </span>
-              <span className="text-[10px] font-medium tracking-widest text-muted-foreground uppercase -mt-1">
-                Trust
+              <span className="text-base font-bold tracking-tight text-foreground">
+                GEM Cybersecurity and Monitoring Assist
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link key={link.name} to={link.href}>
-                <Button variant="nav" size="sm">
-                  {link.name}
+            <Link to="/">
+              <Button variant="nav" size="sm" className="px-3">
+                Home
+              </Button>
+            </Link>
+            
+            {/* GEM Products Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="nav" size="sm" className="px-3 gap-1">
+                  GEM Products
+                  <ChevronDown className="h-4 w-4" />
                 </Button>
-              </Link>
-            ))}
-          </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-56 bg-card border-border">
+                {productLinks.map((link) => (
+                  <DropdownMenuItem key={link.name} asChild>
+                    <Link 
+                      to={link.href}
+                      className="cursor-pointer text-muted-foreground hover:text-foreground"
+                    >
+                      {link.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+            <Link to="/services">
+              <Button variant="nav" size="sm" className="px-3">
+                Services
+              </Button>
+            </Link>
             <Link to="/portal">
-              <Button variant="cyber-ghost" size="sm">
-                Client Portal
+              <Button variant="nav" size="sm" className="px-3">
+                Threat Monitor
+              </Button>
+            </Link>
+            <Link to="/sentinel-x">
+              <Button variant="nav" size="sm" className="px-3">
+                Sentinel-X
+              </Button>
+            </Link>
+            <Link to="/trust-center">
+              <Button variant="nav" size="sm" className="px-3">
+                About
+              </Button>
+            </Link>
+            <Link to="/trust-center">
+              <Button variant="nav" size="sm" className="px-3">
+                Trust Center
+              </Button>
+            </Link>
+            <Link to="/portal/team">
+              <Button variant="nav" size="sm" className="px-3">
+                Team
               </Button>
             </Link>
             <Link to="/contact">
-              <Button variant="hero" size="sm">
-                Get Protected
+              <Button variant="nav" size="sm" className="px-3">
+                Contact
               </Button>
             </Link>
           </div>
@@ -79,7 +134,7 @@ export function Navbar() {
         )}
       >
         <div className="container mx-auto px-4 py-4 space-y-2">
-          {navLinks.map((link) => (
+          {mainNavLinks.map((link) => (
             <Link
               key={link.name}
               to={link.href}
@@ -97,7 +152,7 @@ export function Navbar() {
             </Link>
             <Link to="/contact" onClick={() => setIsOpen(false)}>
               <Button variant="hero" className="w-full">
-                Get Protected
+                Secure Your Perimeter
               </Button>
             </Link>
           </div>

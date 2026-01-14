@@ -18,6 +18,9 @@ import Team from "./pages/portal/Team";
 import Activity from "./pages/portal/Activity";
 import Settings from "./pages/portal/Settings";
 import NotFound from "./pages/NotFound";
+import BioVault from "./pages/products/BioVault";
+import NeuralNet from "./pages/products/NeuralNet";
+import QuantumGuard from "./pages/products/QuantumGuard";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +39,9 @@ const App = () => (
             <Route path="/real-estate" element={<RealEstate />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/products/bio-vault" element={<BioVault />} />
+            <Route path="/products/neural-net" element={<NeuralNet />} />
+            <Route path="/products/quantum-guard" element={<QuantumGuard />} />
             <Route path="/portal" element={<PortalDashboard />} />
             <Route path="/portal/tasks" element={<TaskBoard />} />
             <Route path="/portal/incidents" element={<Incidents />} />

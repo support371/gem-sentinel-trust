@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Shield, ChevronDown } from "lucide-react";
+import { Menu, X, Shield, ChevronDown, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
@@ -9,6 +9,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 
 const mainNavLinks = [
   { name: "Home", href: "/" },
@@ -22,15 +27,14 @@ const mainNavLinks = [
 ];
 
 const productLinks = [
-  { name: "Sentinel-X Framework", href: "/sentinel-x" },
-  { name: "Threat Monitoring", href: "/services#monitoring" },
-  { name: "Incident Response", href: "/services#response" },
-  { name: "Compliance Suite", href: "/services#compliance" },
-  { name: "Real Estate Protection", href: "/real-estate" },
+  { name: "GEM Bio-Vault", href: "/products/bio-vault" },
+  { name: "GEM Neural-Net", href: "/products/neural-net" },
+  { name: "GEM Quantum-Guard", href: "/products/quantum-guard" },
 ];
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [productsOpen, setProductsOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 bg-background/90 backdrop-blur-xl">
@@ -134,7 +138,38 @@ export function Navbar() {
         )}
       >
         <div className="container mx-auto px-4 py-4 space-y-2">
-          {mainNavLinks.map((link) => (
+          <Link
+            to="/"
+            onClick={() => setIsOpen(false)}
+            className="block py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-colors"
+          >
+            Home
+          </Link>
+          
+          {/* GEM Products Collapsible */}
+          <Collapsible open={productsOpen} onOpenChange={setProductsOpen}>
+            <CollapsibleTrigger className="flex items-center justify-between w-full py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-colors">
+              <span>GEM Products</span>
+              {productsOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+            </CollapsibleTrigger>
+            <CollapsibleContent className="pl-4 space-y-1">
+              {productLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setProductsOpen(false);
+                  }}
+                  className="block py-2 px-4 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </CollapsibleContent>
+          </Collapsible>
+          
+          {mainNavLinks.slice(1).map((link) => (
             <Link
               key={link.name}
               to={link.href}

@@ -17,12 +17,11 @@ import {
 
 const mainNavLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "/services" },
-  { name: "Threat Monitor", href: "/portal" },
-  { name: "Sentinel-X", href: "/sentinel-x" },
-  { name: "About", href: "/trust-center" },
-  { name: "Trust Center", href: "/trust-center" },
-  { name: "Team", href: "/portal/team" },
+  { name: "Platform", href: "/platform" },
+  { name: "Security & Compliance", href: "/security-compliance" },
+  { name: "Incident Response", href: "/incident-governance" },
+  { name: "Insights", href: "/insights" },
+  { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -60,11 +59,17 @@ export function Navbar() {
               </Button>
             </Link>
             
+            <Link to="/platform">
+              <Button variant="nav" size="sm" className="px-3">
+                Platform
+              </Button>
+            </Link>
+            
             {/* GEM Products Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="nav" size="sm" className="px-3 gap-1">
-                  GEM Products
+                  Products
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
@@ -82,34 +87,24 @@ export function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/services">
+            <Link to="/security-compliance">
               <Button variant="nav" size="sm" className="px-3">
-                Services
+                Security
               </Button>
             </Link>
-            <Link to="/portal">
+            <Link to="/incident-governance">
               <Button variant="nav" size="sm" className="px-3">
-                Threat Monitor
+                Incidents
               </Button>
             </Link>
-            <Link to="/sentinel-x">
+            <Link to="/insights">
               <Button variant="nav" size="sm" className="px-3">
-                Sentinel-X
+                Insights
               </Button>
             </Link>
-            <Link to="/trust-center">
+            <Link to="/about">
               <Button variant="nav" size="sm" className="px-3">
                 About
-              </Button>
-            </Link>
-            <Link to="/trust-center">
-              <Button variant="nav" size="sm" className="px-3">
-                Trust Center
-              </Button>
-            </Link>
-            <Link to="/portal/team">
-              <Button variant="nav" size="sm" className="px-3">
-                Team
               </Button>
             </Link>
             <Link to="/contact">
@@ -146,10 +141,10 @@ export function Navbar() {
             Home
           </Link>
           
-          {/* GEM Products Collapsible */}
+          {/* Products Collapsible */}
           <Collapsible open={productsOpen} onOpenChange={setProductsOpen}>
             <CollapsibleTrigger className="flex items-center justify-between w-full py-3 px-4 text-muted-foreground hover:text-foreground hover:bg-secondary/50 rounded-lg transition-colors">
-              <span>GEM Products</span>
+              <span>Products</span>
               {productsOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </CollapsibleTrigger>
             <CollapsibleContent className="pl-4 space-y-1">

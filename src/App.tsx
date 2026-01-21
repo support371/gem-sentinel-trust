@@ -21,6 +21,11 @@ import NotFound from "./pages/NotFound";
 import BioVault from "./pages/products/BioVault";
 import NeuralNet from "./pages/products/NeuralNet";
 import QuantumGuard from "./pages/products/QuantumGuard";
+import PlatformOverview from "./pages/PlatformOverview";
+import SecurityCompliance from "./pages/SecurityCompliance";
+import IncidentGovernance from "./pages/IncidentGovernance";
+import InsightsDashboard from "./pages/InsightsDashboard";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -42,6 +47,11 @@ const App = () => (
             <Route path="/products/bio-vault" element={<BioVault />} />
             <Route path="/products/neural-net" element={<NeuralNet />} />
             <Route path="/products/quantum-guard" element={<QuantumGuard />} />
+            <Route path="/platform" element={<PlatformOverview />} />
+            <Route path="/security-compliance" element={<SecurityCompliance />} />
+            <Route path="/incident-governance" element={<IncidentGovernance />} />
+            <Route path="/insights" element={<InsightsDashboard />} />
+            <Route path="/about" element={<About />} />
             <Route path="/portal" element={<PortalDashboard />} />
             <Route path="/portal/tasks" element={<TaskBoard />} />
             <Route path="/portal/incidents" element={<Incidents />} />

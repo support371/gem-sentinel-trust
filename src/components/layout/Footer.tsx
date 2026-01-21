@@ -3,15 +3,15 @@ import { Shield, Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
 
 const footerLinks = {
   services: [
-    { name: "Threat Monitoring", href: "/services#monitoring" },
-    { name: "Incident Response", href: "/services#response" },
-    { name: "Compliance", href: "/services#compliance" },
-    { name: "Sentinel-X", href: "/sentinel-x" },
+    { name: "Platform Overview", href: "/platform" },
+    { name: "Security & Compliance", href: "/security-compliance" },
+    { name: "Incident Response", href: "/incident-governance" },
+    { name: "Insights Dashboard", href: "/insights" },
   ],
   company: [
-    { name: "About Us", href: "/trust-center" },
+    { name: "About Us", href: "/about" },
     { name: "Trust Center", href: "/trust-center" },
-    { name: "Team", href: "/portal/team" },
+    { name: "Sentinel-X", href: "/sentinel-x" },
     { name: "Contact", href: "/contact" },
   ],
   legal: [

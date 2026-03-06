@@ -208,6 +208,7 @@ export default function Contact() {
                     <Label htmlFor="interest">Area of Interest</Label>
                     <select 
                       id="interest"
+                      name="interest"
                       className="w-full h-10 px-3 rounded-md bg-background border border-input text-foreground"
                       required
                     >
@@ -225,6 +226,7 @@ export default function Contact() {
                     <Label htmlFor="message">Message</Label>
                     <Textarea 
                       id="message" 
+                      name="message"
                       placeholder="Tell us about your security needs..."
                       className="min-h-[120px]"
                       required

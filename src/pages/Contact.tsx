@@ -19,16 +19,34 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Received",
-      description: "Our security team will contact you within 24 hours.",
-    });
-    
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const payload = {
+      first_name: (formData.get("firstName") as string)?.trim(),
+      last_name: (formData.get("lastName") as string)?.trim(),
+      email: (formData.get("email") as string)?.trim(),
+      company: (formData.get("company") as string)?.trim(),
+      interest: (formData.get("interest") as string) || null,
+      message: (formData.get("message") as string)?.trim(),
+    };
+
+    if (!payload.first_name || !payload.last_name || !payload.email || !payload.company || !payload.message) {
+      toast({ title: "Missing fields", description: "Please fill in all required fields.", variant: "destructive" });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const { error } = await supabase.from("contact_submissions").insert(payload);
+
+    if (error) {
+      toast({ title: "Submission failed", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } else {
+      toast({ title: "Message Received", description: "Our security team will contact you within 24 hours." });
+      form.reset();
+    }
+
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
   };
 
   return (

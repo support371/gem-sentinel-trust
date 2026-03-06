@@ -77,6 +77,39 @@ export type Database = {
         }
         Relationships: []
       }
+      contact_submissions: {
+        Row: {
+          company: string
+          created_at: string
+          email: string
+          first_name: string
+          id: string
+          interest: string | null
+          last_name: string
+          message: string
+        }
+        Insert: {
+          company: string
+          created_at?: string
+          email: string
+          first_name: string
+          id?: string
+          interest?: string | null
+          last_name: string
+          message: string
+        }
+        Update: {
+          company?: string
+          created_at?: string
+          email?: string
+          first_name?: string
+          id?: string
+          interest?: string | null
+          last_name?: string
+          message?: string
+        }
+        Relationships: []
+      }
       incidents: {
         Row: {
           affected_systems: string[] | null

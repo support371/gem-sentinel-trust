@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
@@ -19,16 +20,34 @@ export default function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Message Received",
-      description: "Our security team will contact you within 24 hours.",
-    });
-    
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    const payload = {
+      first_name: (formData.get("firstName") as string)?.trim(),
+      last_name: (formData.get("lastName") as string)?.trim(),
+      email: (formData.get("email") as string)?.trim(),
+      company: (formData.get("company") as string)?.trim(),
+      interest: (formData.get("interest") as string) || null,
+      message: (formData.get("message") as string)?.trim(),
+    };
+
+    if (!payload.first_name || !payload.last_name || !payload.email || !payload.company || !payload.message) {
+      toast({ title: "Missing fields", description: "Please fill in all required fields.", variant: "destructive" });
+      setIsSubmitting(false);
+      return;
+    }
+
+    const { error } = await supabase.from("contact_submissions").insert(payload);
+
+    if (error) {
+      toast({ title: "Submission failed", description: "Something went wrong. Please try again.", variant: "destructive" });
+    } else {
+      toast({ title: "Message Received", description: "Our security team will contact you within 24 hours." });
+      form.reset();
+    }
+
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
   };
 
   return (
@@ -143,6 +162,7 @@ export default function Contact() {
                         <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                         <Input 
                           id="firstName" 
+                          name="firstName"
                           placeholder="John" 
                           className="pl-10"
                           required
@@ -151,7 +171,7 @@ export default function Contact() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="lastName">Last Name</Label>
-                      <Input id="lastName" placeholder="Doe" required />
+                      <Input id="lastName" name="lastName" placeholder="Doe" required />
                     </div>
                   </div>
                   
@@ -161,6 +181,7 @@ export default function Contact() {
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                       <Input 
                         id="email" 
+                        name="email"
                         type="email" 
                         placeholder="john@company.com" 
                         className="pl-10"
@@ -175,6 +196,7 @@ export default function Contact() {
                       <Building className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                       <Input 
                         id="company" 
+                        name="company"
                         placeholder="Company Name" 
                         className="pl-10"
                         required
@@ -186,6 +208,7 @@ export default function Contact() {
                     <Label htmlFor="interest">Area of Interest</Label>
                     <select 
                       id="interest"
+                      name="interest"
                       className="w-full h-10 px-3 rounded-md bg-background border border-input text-foreground"
                       required
                     >
@@ -203,6 +226,7 @@ export default function Contact() {
                     <Label htmlFor="message">Message</Label>
                     <Textarea 
                       id="message" 
+                      name="message"
                       placeholder="Tell us about your security needs..."
                       className="min-h-[120px]"
                       required

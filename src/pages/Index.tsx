@@ -7,6 +7,7 @@ import { SentinelXSection } from "@/components/sections/SentinelXSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { TeamSection } from "@/components/sections/TeamSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { ScrollFadeIn } from "@/components/effects/ScrollFadeIn";
 
 const Index = () => {
   return (
@@ -14,12 +15,24 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <ServicesSection />
-        <ThreatMonitorSection />
-        <SentinelXSection />
-        <AboutSection />
-        <TeamSection />
-        <ContactSection />
+        <ScrollFadeIn>
+          <ServicesSection />
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <ThreatMonitorSection />
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <SentinelXSection />
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <AboutSection />
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <TeamSection />
+        </ScrollFadeIn>
+        <ScrollFadeIn>
+          <ContactSection />
+        </ScrollFadeIn>
       </main>
       <Footer />
     </div>
